@@ -71,12 +71,13 @@ void handleOffButtom(){
 
 // 初始化
 void setup(void){
-  // GPIO4用作继电器控制脚，默认拉低（关闭）
+  led_status = 0;
+
+  // 通过函数配置GPIO4用作继电器控制脚并使能，默认拉低（关闭）
   pinMode(4, OUTPUT);
   digitalWrite(4, LOW);
-  led_status = 0;
   
-  // 监听httpServer，实现触发对应函数
+  // 监听三个不同的WebServer接口，实现触发对应函数
   httpServer.on("/", handleRoot);
   httpServer.on("/on", handleOnButtom);
   httpServer.on("/off", handleOffButtom);
